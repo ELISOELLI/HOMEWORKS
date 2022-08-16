@@ -118,3 +118,83 @@ void CheckNumberDay(int numberDay)
 }
 
 CheckNumberDay(numberDay);
+
+
+//TASK 19 SEMINAR3 C#
+// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+// 14212 -> нет
+// 12821 -> да
+// 23432 -> дa
+
+string Palindrome(string str)
+{
+    if (str[0] == str[4] && str[1] == str[3]);
+    {
+        string yes = "ДА";
+        return yes;
+    }
+    string no = "НЕТ";
+    return no;
+}
+
+Console.WriteLine("Введиет пятизначное число: ");
+string? str = Console.ReadLine();
+Console.WriteLine($"Введеное число палиндром: {Palindrome(str)}");
+
+
+//TASK21 SEMINAR3 C#
+// Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+// A (3,6,8); B (2,1,-7), -> 15.84
+// A (7,-5, 0); B (1,-1,9) -> 11.53
+
+double CalcDistance(int ax, int ay, int az, int bx, int by, int bz)
+{
+    return Math.Sqrt(Math.Pow(bx - ax, 2) + Math.Pow(by - ay, 2) + Math.Pow(bz - az, 2));
+}
+
+Console.Clear();
+Console.WriteLine("Ведите координаты точки A, в 3D пространстве: ");
+int ax = int.Parse(Console.ReadLine());
+int ay = int.Parse(Console.ReadLine());
+int az = int.Parse(Console.ReadLine());
+Console.WriteLine("Ведите координаты точки B, в 3D пространстве: ");
+int bx = int.Parse(Console.ReadLine());
+int by = int.Parse(Console.ReadLine());
+int bz = int.Parse(Console.ReadLine());
+
+Console.WriteLine($"Растояние между точкой A и B равно {Math.Round(CalcDistance(ax, ay, az, bx, by, bz), 2)}"); 
+
+
+//TASK 23 SEMINAR3 C#
+// Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+// 3 -> 1, 8, 27
+// 5 -> 1, 8, 27, 64, 125
+
+Console.WriteLine("Введите число: ");
+// Решение №1 Простое.
+int cube = Convert.ToInt32(Console.ReadLine());
+for (int i = 1; i <= cube; i++)
+{
+    Console.Write(Math.Pow(i, 3) + " ");
+}
+
+Console.WriteLine();
+
+// Решение №2 Через метод.
+void Cube(int[] cube){
+    for (int i = 0; i < cube.Length; i++)
+    {
+        cube[i] = Convert.ToInt32(Math.Pow(i, 3));
+    }
+}
+
+void PrintArry(int[] coll){
+  for (int i = 1; i < coll.Length; i++)
+  {
+    Console.Write(coll[i]+ " ");
+  }
+} 
+
+int[] arry = new int[cube+1];
+Cube(arry);
+PrintArry(arry);
