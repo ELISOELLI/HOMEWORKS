@@ -59,3 +59,62 @@ else if (a == 0 || a == 1) {Console.WriteLine("У данного чисела н
         count++;
     }
 }    
+
+
+//TASK10 SEMINAR2 C#
+// Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
+// 456 -> 5
+// 782 -> 8
+// 918 -> 1
+
+Console.Clear();
+Console.WriteLine("Enter a three-digit number: ");
+string? numberStr = Console.ReadLine();
+
+Console.WriteLine($"The second number - {numberStr[1]}");
+
+
+//TASK13 SEMINAR2 C#
+// Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+// 645 -> 5
+// 78 -> третьей цифры нет
+// 32679 -> 6
+
+Console.Clear();
+Console.WriteLine("Enter number: ");
+string? strNumber = Console.ReadLine();
+if (strNumber.Length < 3)
+{
+    Console.WriteLine("There is no third number");
+}
+else
+{
+    Console.WriteLine($"The third digit of a given number -> {strNumber[2]}");
+}
+
+
+//TASK15 SEMINAR2 C#
+// Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+// 6 -> да
+// 7 -> да
+// 1 -> нет
+
+Console.Clear();
+Console.WriteLine("Enter the number of the day of the week: ");
+int numberDay = Convert.ToInt32(Console.ReadLine());
+
+void CheckNumberDay(int numberDay)
+{
+    if (numberDay >= 1 && numberDay < 6)
+    {
+        Console.WriteLine("Working day");
+    }
+    else if (numberDay == 6 || numberDay == 7)
+    {
+        Console.WriteLine("Weekend");
+    }
+    else
+        Console.WriteLine("This day of the week does not exist");
+}
+
+CheckNumberDay(numberDay);
