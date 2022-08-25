@@ -263,3 +263,153 @@ int[] generate8Array()
 Console.WriteLine($"[{String.Join(", ", generate8Array())}]");
 
 
+//TASK34 SEMINAR 5 C#
+
+// Задайте массив заполненный случайными положительными трёхзначными числами.
+// Напишите программу, которая покажет количество чётных чисел в массиве.
+
+// [345, 897, 568, 234] -> 2
+
+int[] generateArray(int length, int min=-100, int max=101)
+{
+    int[] result = new int[length];
+    for (int i = 0; i < result.Length; i++)
+    {
+        result[i] = new Random().Next(min, max);
+    }
+    return result;
+}
+
+
+string prettyPrintArray(int[] array)
+{
+    return ($"[{String.Join(", ",array)}]");
+}
+
+int countEvenElements(int[] array)
+{
+    int result = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 == 0)
+            result++;
+    }
+    return result;
+}
+;
+
+Console.Write("Введите длину случайного массива:");
+if (!int.TryParse(Console.ReadLine(), out int length))
+{
+  Console.Write("Неправильный ввод");
+} else
+{
+int[] array = generateArray(length, 100, 1000);
+Console.Write("Случайный массив: ");
+Console.WriteLine(prettyPrintArray(array));
+Console.Write("Количество чётных чисел в массиве: ");
+Console.WriteLine(countEvenElements(array));
+} 
+
+
+//TASK 36 SEMINAR LESSON 5 C#
+
+// Задайте одномерный массив, заполненный случайными числами. 
+// Найдите сумму элементов, стоящих на нечётных позициях.
+
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
+
+int[] generateArray(int length, int min=-100, int max=101)
+{
+    int[] result = new int[length];
+    for (int i = 0; i < result.Length; i++)
+    {
+        result[i] = new Random().Next(min, max);
+    }
+    return result;
+}
+
+string prettyPrintArray(int[] array)
+{
+    return ($"[{String.Join(", ",array)}]");
+}
+
+int sumOddPositions(int[] array)
+{
+    int result = 0;
+    for (int i = 1; i < array.Length; i+=2)
+    {
+            result+=array[i];
+    }
+    return result;
+}
+;
+
+Console.Write("Введите длину случайного массива:");
+if (!int.TryParse(Console.ReadLine(), out int length))
+{
+  Console.Write("Неправильный ввод");
+} else
+{
+int[] array = generateArray(length);
+Console.Write("Случайный массив: ");
+Console.WriteLine(prettyPrintArray(array));
+Console.Write("Сумма элементов, стоящих на нечётных позициях: ");
+Console.WriteLine(sumOddPositions(array));
+}
+
+
+//TASK38 LESSON 5 C#
+
+//  Задайте массив вещественных чисел.
+// Найдите разницу между максимальным и минимальным элементов массива.
+
+// [3 7 22 2 78] -> 76
+
+
+double[] generateRealNumberArray(int length, int min = -100, int max = 100)
+{
+    double[] result = new double[length];
+    for (int i = 0; i < result.Length; i++)
+    {
+        result[i] = new Random().NextDouble() * new Random().Next(min, max);
+    }
+    return result;
+}
+
+string prettyPrintArray(double[] array)
+{
+    return ($"[{String.Join(", ", array)}]");
+}
+
+double findMinMaxDelta(double[] array)
+{
+    int minIndex = 0;
+    int maxIndex = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > array[maxIndex])
+            maxIndex = i;
+        if (array[i] < array[minIndex])
+            minIndex = i;
+    }
+    return array[maxIndex] - array[minIndex];
+}
+;
+
+Console.Write("Введите длину случайного массива:");
+if (!int.TryParse(Console.ReadLine(), out int length))
+{
+    Console.Write("Неправильный ввод");
+}
+else
+{
+    double[] array = generateRealNumberArray(length, 0, 100);
+    Console.Write("Случайный массив: ");
+    Console.WriteLine(prettyPrintArray(array));
+    Console.Write("Разница между максимальным и минимальным элементами массива: ");
+    Console.WriteLine(findMinMaxDelta(array));
+    // Console.WriteLine(findMinMaxDelta(new double[]{3, 7, 22, 2, 78}));
+
+}
