@@ -413,3 +413,151 @@ else
     // Console.WriteLine(findMinMaxDelta(new double[]{3, 7, 22, 2, 78}));
 
 }
+
+//TASK41 SEMINAR,LESSON 6 C#
+// Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// 0, 7, 8, -2, -2 -> 2
+// 1, -7, 567, 89, 223-> 3
+
+Console.Write($"Введите количество чисел: ");
+int m = Convert.ToInt32(Console.ReadLine());
+int[] massiveNumbers = new int[m];
+
+void InputNumbers(int m)
+{
+for (int i = 0; i < m; i++)
+  {
+    Console.Write($"Введите {i+1} число: ");
+    massiveNumbers[i] = Convert.ToInt32(Console.ReadLine());
+  }
+}
+
+
+int Comparison(int[] massiveNumbers)
+{
+  int count = 0;
+  for (int i = 0; i < massiveNumbers.Length; i++)
+  {
+    if(massiveNumbers[i] > 0 ) count += 1; 
+  }
+  return count;
+}
+
+InputNumbers(m);
+
+Console.WriteLine($"Введено чисел больше 0: {Comparison(massiveNumbers)} ");
+
+
+//TASK43 SEMINAR LESSON 6 C#
+// Напишите программу, которая найдёт точку пересечения двух прямых, 
+// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+// b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
+
+Console.WriteLine ("Введите значения b1, k1, b2, k2");
+Console.Write("Введите b1: ");
+double b1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите k1: ");
+double k1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите b2: ");
+double b2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите k2: ");
+double k2 = Convert.ToDouble(Console.ReadLine());
+double xIntersection = 0;
+double yIntersection = 0;
+if (b1 == b2 & k1 == k2) Console.WriteLine("Прямые совпадают");
+else if (k1 == k2) Console.WriteLine("Прямые параллельны друг другу");
+else 
+{
+    xIntersection = (b2 - b1)/(k1 - k2);
+    yIntersection = k1*xIntersection + b1;
+    Console.WriteLine("точка пересечения "+"("+xIntersection+";" +yIntersection+ ")");
+}
+
+//TASK 47 SEMINAR 6 C#
+// Напишите программу, которая найдёт точку пересечения двух прямых, 
+// заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+// b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
+
+Console.WriteLine ("Введите значения b1, k1, b2, k2");
+Console.Write("Введите b1: ");
+double b1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите k1: ");
+double k1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите b2: ");
+double b2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите k2: ");
+double k2 = Convert.ToDouble(Console.ReadLine());
+double xIntersection = 0;
+double yIntersection = 0;
+if (b1 == b2 & k1 == k2) Console.WriteLine("Прямые совпадают");
+else if (k1 == k2) Console.WriteLine("Прямые параллельны друг другу");
+else 
+{
+    xIntersection = (b2 - b1)/(k1 - k2);
+    yIntersection = k1*xIntersection + b1;
+    Console.WriteLine("точка пересечения "+"("+xIntersection+";" +yIntersection+ ")");
+}
+
+// TASK3 SEMINAR 6 C# (additional-доп.задача)
+// Задайте двумерный массив со случайными числами от -10 до 10.
+//Найдите сумму элементов, находящихся на главной диагонали (с индексами (0,0); (1;1) и т.д.)
+
+// Например, задан массив:
+
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+
+// Сумма элементов главной диагонали: 1+9+2 = 12
+
+int[,] generate2dArray(int height = 4, int width = 3, int min = -10, int max = 11)
+{
+    int[,] result = new int[height, width];
+    Random rnd = new Random();
+    for (int i = 0; i < result.GetLength(0); i++)
+    {
+        for (int j = 0; j < result.GetLength(1); j++)
+        {
+            result[i, j] = rnd.Next(min, max);
+        }
+    }
+    return result;
+}
+
+string prettyPrint2dArray(int[,] array)
+{
+    string result = "";
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            result += array[i, j] + " ";
+        }
+        result += "\n";
+    }
+    return result;
+}
+
+int sumOfDiagonal(int[,] array)
+{
+    int sum = 0;
+    int limiter =
+        (array.GetLength(0) < array.GetLength(1)) ? array.GetLength(0) : array.GetLength(1);
+    for (int i = 0; i < limiter; i++)
+    {
+        sum += array[i, i];
+    }
+    return sum;
+}
+
+int[,] testArray = new int[,] { { 1, 4, 7, 2 }, { 5, 9, 2, 3 }, { 8, 4, 2, 4 } };
+int[,] randomArray = generate2dArray();
+
+Console.WriteLine("Тестовый массив: ");
+Console.WriteLine(prettyPrint2dArray(testArray));
+Console.WriteLine($"Сумма чисел на главной диагонали: {sumOfDiagonal(testArray)}");
+
+Console.WriteLine("Случайный массив: ");
+Console.WriteLine(prettyPrint2dArray(randomArray));
+Console.WriteLine($"Сумма чисел на главной диагонали: {sumOfDiagonal(randomArray)}");
