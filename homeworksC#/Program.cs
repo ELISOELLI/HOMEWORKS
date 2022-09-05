@@ -1002,6 +1002,77 @@ void PrintArray(int[,] array)
 
 
 
+//TASK 64 seminar 9 C#
+//  Задайте значения M и N. Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
+// M = 1; N = 5. -> ""1, 2, 3, 4, 5""
+// M = 4; N = 8. -> ""4, 6, 7, 8""
 
+
+ Console.Write("Введите число M: ");
+                  int M = Convert.ToInt32(Console.ReadLine());
+ Console.Write("Введите число N: ");
+                 int N = Convert.ToInt32(Console.ReadLine());
+                    Console.Write(RecursMetod(M,N));
+
+static int RecursMetod(int M, int N)
+        {
+            if (M < N)
+            {
+                Console.Write(M + ", ");
+                M++;
+                RecursMetod(M, N);
+            }
+            return N;
+        }
+
+
+//TASK 66 SEMINAR 9 C#
+// Задайте значения M и N. Напишите программу, которая найдёт сумму
+// натуральных элементов в промежутке от M до N. Выполнить с помощью рекурсии.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+
+Console.Write("Введите число M: ");
+int numberM = Convert.ToInt32(Console.ReadLine());
+
+Console.Write("Введите число N: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
+
+///Метод нахождения суммы натуральных элементов в промежутке от M до N
+void GapNumberSum (int numberM, int numberN, int sum)
+{
+    if (numberM > numberN) 
+    {
+        Console.WriteLine($"Сумма натуральных элементов в промежутке от M до N: {sum}"); 
+        return;
+    }
+    sum = sum + (numberM++);
+    GapNumberSum(numberM, numberN, sum);
+}
+
+GapNumberSum(numberM, numberN, 0);
+
+
+//TASK 68 SEMINAR 9 C#
+// Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+// m = 3, n = 2 -> A(m,n) = 29
+
+Console.Write("Введите m: ");
+int numberM = int.Parse(Console.ReadLine());
+
+Console.Write("Введите n: ");
+int numberN = int.Parse(Console.ReadLine());
+
+// Метод вычисления функции Аккермана:
+int AckermannFunction (int numberM, int numberN)
+{
+    if (numberM == 0) return numberN + 1;
+    if (numberM != 0 && numberN == 0) return AckermannFunction(numberM - 1, 1);
+    if (numberM > 0 && numberN > 0) return AckermannFunction(numberM - 1, AckermannFunction(numberM, numberN - 1));
+return AckermannFunction(numberM, numberN);
+}
+
+Console.WriteLine($"A({numberM},{numberN}) = {AckermannFunction(numberM, numberN)}");
 
 
